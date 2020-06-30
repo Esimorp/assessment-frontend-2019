@@ -1,8 +1,6 @@
 # DoctorWorld Frontend Test Assignment
 
-You should spend no more than **4 hours** on this test assignment.
-
-When you are done with the test, please send a link to your repo to your recruiter.  Thank you for your time and interest in Slate!
+When you are done with the test, please send a link to your repo to me.  Thank you for your time!
 
 ## Description
 
