@@ -1,4 +1,4 @@
-# Slate Frontend Test Assignment
+# DoctorWorld Frontend Test Assignment
 
 You should spend no more than **4 hours** on this test assignment.
 
