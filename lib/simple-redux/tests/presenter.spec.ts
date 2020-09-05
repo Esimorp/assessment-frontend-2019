@@ -16,6 +16,12 @@ describe("createPresenter", () => {
             }
         }, undefined)).toThrow()
 
+        expect(() => createPresenter(test_reducer as unknown, {
+            t: () => {
+                return {}
+            }
+        }, undefined)).toThrow()
+
         expect(() => createPresenter(1, {}, undefined)).toThrow()
 
         expect(() => createPresenter(1, undefined, undefined)).toThrow()
