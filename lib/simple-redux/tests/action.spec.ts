@@ -15,7 +15,7 @@ describe("createActionCreator", () => {
         expect(createActionCreator("test-namespace", "test-type")).not.toThrow();
 
         expect(
-            ()=>createActionCreator("test-namespace", "test-type")("test-payload")
+            () => createActionCreator("test-namespace", "test-type")("test-payload")
         ).not.toThrow();
 
         expect(
@@ -32,9 +32,7 @@ describe("createActionCreator", () => {
             payload: null
         });
 
-        expect(() => {
-            createActionCreator("test-namespace", "test-type")({key: 'value'})
-        }).toEqual({
+        expect(createActionCreator("test-namespace", "test-type")({key: 'value'})).toEqual({
             type: 'test-namespace/test-type',
             payload: {key: 'value'}
         });
