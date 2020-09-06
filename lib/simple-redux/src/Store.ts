@@ -6,8 +6,10 @@ import {Effect} from "./Effect";
 
 type DispatchAction = (payload: unknown) => void;
 type Dispatch = (this: Store, action: Action) => void;
+type Listener = () => void
 
 interface Store {
+    listeners: Array<Listener>,
     state: Record<string, State>
     reducers: Record<string, Record<string, Reducer>>
     dispatch: (action: Action) => State
@@ -15,7 +17,10 @@ interface Store {
     actionWrapper: Record<string, Record<string, DispatchAction>>
     effects: Record<string, Record<string, Effect>>
     getState: () => Record<string, State>
-    wrapActions: () => void
+    wrapActions: () => void,
+    subscribe: (listener: Listener) => Listener,
+    unsubscribe: (listener: Listener) => void
+    notifyStateChange: () => void
 }
 
 function createStore(presenters: Record<string, Presenter>): Store {
@@ -24,6 +29,7 @@ function createStore(presenters: Record<string, Presenter>): Store {
         const type = action.type.split('/')[1];
         const namespaceState = this.state[namespace];
         this.state[namespace] = this.reducers[namespace][type](namespaceState, action.payload);
+        this.notifyStateChange();
     }
 
     const reducers: Record<string, Record<string, Reducer>> = {};
@@ -56,6 +62,7 @@ function createStore(presenters: Record<string, Presenter>): Store {
 
 
     const store: Store = {
+        listeners: [],
         state, reducers: reducers,
         dispatch: dispatch,
         actionCreators,
@@ -63,6 +70,18 @@ function createStore(presenters: Record<string, Presenter>): Store {
         effects,
         getState: function (this: Store) {
             return this.state
+        },
+        subscribe: function (listener) {
+            this.listeners.push(listener);
+            return listener;
+        },
+        unsubscribe: function (sub) {
+            this.listeners = this.listeners.filter(listener => listener !== sub);
+        },
+        notifyStateChange: function () {
+            for (const listener of this.listeners) {
+                listener();
+            }
         },
         wrapActions: function (this: Store) {
             const namespaces = Object.keys(this.actionCreators);
@@ -92,4 +111,4 @@ function createStore(presenters: Record<string, Presenter>): Store {
     return store;
 }
 
-export {createStore, DispatchAction};
+export {createStore, DispatchAction, Store};
