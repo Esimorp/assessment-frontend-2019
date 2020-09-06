@@ -2,9 +2,10 @@
   "name": "simple-redux",
   "version": "1.0.0",
   "description": "a simple implementation of redux",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
