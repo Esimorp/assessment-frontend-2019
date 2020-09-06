@@ -1,3 +1,7 @@
-type Effect = (payload: unknown) => void;
+import {ActionCreator} from "./Action";
 
-export {Effect};
+type Effect = (payload: unknown, actionWrapper: Record<string, ActionCreator>) => void;
+
+type EffectCreator = (payload: unknown) => Effect;
+
+export {Effect, EffectCreator};
