@@ -12,12 +12,8 @@ function App() {
         <ProviderComponent store={AppStore}>
             <Router>
                 <Header/>
-                <Route exact path="/">
-                    {props => <Home {...props} />}
-                </Route>
-                <Route path="/create">
-                    {props => <CreateIncident {...props} />}
-                </Route>
+                <Route exact path="/" component={Home}/>
+                <Route path="/create" component={CreateIncident}/>
             </Router>
         </ProviderComponent>
     )
