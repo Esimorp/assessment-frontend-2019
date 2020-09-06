@@ -6,11 +6,13 @@ class Incident extends Component {
         const {title, assignee, status, id, deleteById} = this.props;
 
         return (
-            <div style={{border: '1px solid black'}}>
-                <p>{title}</p>
-                <p>Assignee: {assignee}</p>
-                <p>Status: {status}</p>
-                <button onClick={deleteById.bind(this, id)}>Delete Async</button>
+            <div className="sm-12 md-6 lg-4 col card">
+                <div className="card-body">
+                <div className="card-title"><h3>{title}</h3></div>
+                <div className="card-text"><p><b>Assignee</b>: {assignee}</p></div>
+                <div className="card-text"><p><b>Status</b>: {status}</p></div>
+                <button className="btn-danger" onClick={deleteById.bind(this, id)}>Delete</button>
+                </div>
             </div>
         )
     }
