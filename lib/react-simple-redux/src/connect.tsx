@@ -18,7 +18,7 @@ function connect(mapStateToProps: MapStateToPropsFunction, mapActionWrapperToPro
                 this.state = props.store.getState();
                 this.unsub = props.store.subscribe(function (this: Proxy) {
                     this.setState(this.props.store.getState())
-                })
+                }.bind(this))
             }
 
             componentWillUnmount() {
