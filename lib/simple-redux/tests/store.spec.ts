@@ -16,7 +16,7 @@ const testPresenter1 = createPresenter(1,
     }, {
         increaseAsync: async (payload, actionWrapper) => {
             await timeout(200);
-            actionWrapper.increase(payload);
+            actionWrapper.testPresenter1.increase(payload);
         }
     }
 )

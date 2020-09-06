@@ -100,7 +100,7 @@ function createStore(presenters: Record<string, Presenter>): Store {
                 for (const key of namespacedEffectKeys) {
                     this.actionWrapper[n][key] = function (store: Store) {
                         return function (payload: unknown) {
-                            store.effects[n][key](payload, store.actionWrapper[n])
+                            store.effects[n][key](payload, store.actionWrapper)
                         }
                     }(this)
                 }
