@@ -32,15 +32,15 @@ function timeout(ms) {
 const effects = {
     createIncidentAsync: async (payload, actionWrapper) => {
         await timeout(200);
-        actionWrapper.IncidentPresenter.createIncident(payload)
+        actionWrapper.Incident.createIncident(payload)
     },
     deleteIncidentByIdAsync: async (payload, actionWrapper) => {
         await timeout(200);
-        actionWrapper.IncidentPresenter.deleteIncidentById(payload)
+        actionWrapper.Incident.deleteIncidentById(payload)
     },
     modifyIncidentByIdAsync: async (payload, actionWrapper) => {
         await timeout(200);
-        actionWrapper.IncidentPresenter.modifyIncidentById(payload)
+        actionWrapper.Incident.modifyIncidentById(payload)
     },
 };
 
