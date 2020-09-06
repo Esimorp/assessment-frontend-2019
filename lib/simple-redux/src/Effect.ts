@@ -1,7 +1,5 @@
-import {ActionCreator} from "./Action";
+import {DispatchAction} from "./Store";
 
-type Effect = (payload: unknown, actionWrapper: Record<string, ActionCreator>) => void;
+type Effect = (payload: unknown, actionWrapper: Record<string, DispatchAction>) => void;
 
-type EffectCreator = (payload: unknown) => Effect;
-
-export {Effect, EffectCreator};
+export {Effect};

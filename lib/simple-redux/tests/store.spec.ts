@@ -15,7 +15,7 @@ const testPresenter1 = createPresenter(1,
         }
     }, {
         increaseAsync: async (payload, actionWrapper) => {
-            await timeout(2000);
+            await timeout(200);
             actionWrapper.increase(payload);
         }
     }
@@ -54,15 +54,15 @@ describe("createStore", () => {
         expect(store.getState()).toEqual(
             {testPresenter1: testPresenter1.state}
         );
-
         store.actionWrapper.testPresenter1.increase(2); // 1 + 2
         expect(store.getState().testPresenter1).toEqual(3);
 
         store.actionWrapper.testPresenter1.decrease(1); // 3 - 1
         expect(store.getState().testPresenter1).toEqual(2);
 
-        store.effects.testPresenter1.increaseAsync(4); // 2 + 4
-        await timeout(2100);
+        store.actionWrapper.testPresenter1.increaseAsync(4); // 2 + 4
+        expect(store.getState().testPresenter1).toEqual(2);
+        await timeout(250);
         expect(store.getState().testPresenter1).toEqual(6);
 
     })
