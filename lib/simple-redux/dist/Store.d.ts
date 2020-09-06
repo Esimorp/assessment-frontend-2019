@@ -15,7 +15,8 @@ interface Store {
     effects: Record<string, Record<string, Effect>>;
     getState: () => Record<string, State>;
     wrapActions: () => void;
-    subscribe: (listener: Listener) => void;
+    subscribe: (listener: Listener) => Listener;
+    unsubscribe: (listener: Listener) => void;
     notifyStateChange: () => void;
 }
 declare function createStore(presenters: Record<string, Presenter>): Store;
