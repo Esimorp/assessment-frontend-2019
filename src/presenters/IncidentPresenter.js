@@ -31,17 +31,18 @@ function timeout(ms) {
 
 const effects = {
     createIncidentAsync: async (payload, actionWrapper) => {
+        actionWrapper.Loading.startLoading();
         await timeout(200);
         actionWrapper.Incident.createIncident(payload)
+        actionWrapper.Loading.endLoading();
     },
     deleteIncidentByIdAsync: async (payload, actionWrapper) => {
+        actionWrapper.Loading.startLoading();
         await timeout(200);
         actionWrapper.Incident.deleteIncidentById(payload)
-    },
-    modifyIncidentByIdAsync: async (payload, actionWrapper) => {
-        await timeout(200);
-        actionWrapper.Incident.modifyIncidentById(payload)
-    },
+        actionWrapper.Loading.endLoading();
+
+    }
 };
 
 const IncidentPresenter = createPresenter(initState, reducers, effects)
