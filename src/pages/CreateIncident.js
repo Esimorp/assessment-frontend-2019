@@ -4,7 +4,7 @@ import {useForm} from "react-hook-form";
 
 function CreateIncident({createIncident}) {
     const {register, handleSubmit} = useForm();
-    const onSubmit = data => createIncident(data);
+    const onSubmit = data => createIncident({...data, id: Date.now()});
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
