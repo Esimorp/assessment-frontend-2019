@@ -4,12 +4,13 @@ import {connect} from "react-simple-redux";
 
 class Home extends React.Component {
     render() {
-        const{incidents} = this.props;
+        const {incidents} = this.props;
 
         return <div>
-            <div>
+            <h1>Incident list</h1>
+            <div className="row">
                 {incidents.map(item => <Incident key={item.id} id={item.id} title={item.title} assignee={item.assignee}
-                                                            status={item.status}/>)}
+                                                 status={item.status}/>)}
             </div>
 
         </div>;
@@ -18,10 +19,9 @@ class Home extends React.Component {
 
 const H = connect((state) => {
     return {
-        incidents: state.Incident
+        incidents: state.Incident,
     }
 }, (actionWrappers) => {
-    return {
-    }
+    return {}
 })(Home)
 export {H as Home}
