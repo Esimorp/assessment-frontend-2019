@@ -4,8 +4,14 @@ import {connect} from "react-simple-redux";
 
 class Home extends React.Component {
     render() {
+        const{incidents} = this.props;
+
         return <div>
-            {this.props.incidents.map(item => <Incident key={item.id} title={item.title} assignee={item.assignee} status={item.status} />)}
+            <div>
+                {incidents.map(item => <Incident key={item.id} id={item.id} title={item.title} assignee={item.assignee}
+                                                            status={item.status}/>)}
+            </div>
+
         </div>;
     }
 }
@@ -16,7 +22,6 @@ const H = connect((state) => {
     }
 }, (actionWrappers) => {
     return {
-        deleteById: actionWrappers.Incident.deleteIncidentByIdAsync
     }
 })(Home)
 export {H as Home}
