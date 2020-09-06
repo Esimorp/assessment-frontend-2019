@@ -9,7 +9,7 @@ type Presenter = {
 }
 
 function createPresenter(initState: State = {}, reducers: Record<string, Reducer> = {}, effects: Record<string, Effect> = {}): Presenter {
-    if (!initState)
+    if (initState == null)
         throw Error("initState must not be null or undefined")
 
     if (typeof initState === 'function')
