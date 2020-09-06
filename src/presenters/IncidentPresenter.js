@@ -35,13 +35,14 @@ const effects = {
         await timeout(200);
         actionWrapper.Incident.createIncident(payload)
         actionWrapper.Loading.endLoading();
+        alert("create incident success")
     },
     deleteIncidentByIdAsync: async (payload, actionWrapper) => {
         actionWrapper.Loading.startLoading();
         await timeout(200);
         actionWrapper.Incident.deleteIncidentById(payload)
         actionWrapper.Loading.endLoading();
-
+        alert("delete incident success")
     }
 };
 
